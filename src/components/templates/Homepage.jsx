@@ -24,8 +24,8 @@ function Homepage() {
 
   return (
     <div>
-      <Pagination page={page} setPage={setPage} />
       <TabelCoin coins={coins} isLoading={isLoading} />
+      <Pagination page={page} setPage={setPage} />
     </div>
   );
 }
