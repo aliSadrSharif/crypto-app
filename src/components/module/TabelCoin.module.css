@@ -19,11 +19,12 @@
   font-size: 1.2rem;
   text-align: left;
   padding: 10px 0;
+  color: #6CB4EE;
 }
 
 .table tbody tr {
   height: 80px;
-  border-bottom: 1px solid #22262e;
+  border-bottom: 1px solid #ffffffa7;
   font-weight: 600;
   font-size: 1.1rem;
 }
@@ -43,7 +44,7 @@
 .symbol span {
   font-weight: 600;
   font-size: 1.2rem;
-  color: #9fa6b7;
+  color: #ffa463;
 }
 
 .success {
