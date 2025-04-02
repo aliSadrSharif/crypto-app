@@ -1,26 +1,35 @@
+import { FadeLoader } from "react-spinners";
+
 import chartUp from "../../assets/chart-up.svg";
 import chartDown from "../../assets/chart-down.svg";
 
-function TabelCoin({ coins }) {
+function TabelCoin({ coins, isLoading }) {
   return (
     <div>
-      <table>
-        <thead>
-          <tr>
-            <th>Coin</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>24h</th>
-            <th>Total volume</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {coins.map((coin) => (
-            <TabelRow coin={coin} key={coin.id} />
-          ))}
-        </tbody>
-      </table>
+      {isLoading ? (
+        <FadeLoader
+        color="#3874ff"
+        width={8}
+      />
+      ) : (
+        <table>
+          <thead>
+            <tr>
+              <th>Coin</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>24h</th>
+              <th>Total volume</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {coins.map((coin) => (
+              <TabelRow coin={coin} key={coin.id} />
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 }
