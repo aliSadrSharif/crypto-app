@@ -5,7 +5,7 @@ import chartDown from "../../assets/chart-down.svg";
 
 import styles from "./TabelCoin.module.css";
 
-function TabelCoin({ coins, isLoading }) {
+function TabelCoin({ coins, isLoading, setChart }) {
   return (
     <div className={styles.container}>
       {isLoading ? (
@@ -24,7 +24,7 @@ function TabelCoin({ coins, isLoading }) {
           </thead>
           <tbody>
             {coins.map((coin) => (
-              <TabelRow coin={coin} key={coin.id} />
+              <TabelRow coin={coin} key={coin.id} setChart={setChart} />
             ))}
           </tbody>
         </table>
@@ -44,11 +44,17 @@ const TabelRow = ({
     current_price,
     price_change_percentage_24h: price_change,
   },
+  setChart
 }) => {
+
+  const showHandeler = () => {
+    setChart(true);
+  }
+
   return (
     <tr>
       <td>
-        <div className={styles.symbol}>
+        <div className={styles.symbol} onClick={showHandeler}>
           <img src={image} />
           <span>{symbol.toUpperCase()}</span>
         </div>
