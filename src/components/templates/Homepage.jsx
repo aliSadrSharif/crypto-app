@@ -12,14 +12,17 @@ function Homepage() {
   const [page, setPage] = useState(1);
   const [currency, setCurrency] = useState("usd");
 
-
   useEffect(() => {
     setIsLoading(true);
     const getData = async () => {
-      const res = await fetch(getCoinList(page, currency));
-      const json = await res.json();
-      setCoins(json);
-      setIsLoading(false);
+      try {
+        const res = await fetch(getCoinList(page, currency));
+        const json = await res.json();
+        setCoins(json);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
     };
 
     getData();
