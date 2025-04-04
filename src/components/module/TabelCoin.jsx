@@ -2,6 +2,7 @@ import { FadeLoader } from "react-spinners";
 
 import chartUp from "../../assets/chart-up.svg";
 import chartDown from "../../assets/chart-down.svg";
+import { marketChart } from "../../services/cryptoApi";
 
 import styles from "./TabelCoin.module.css";
 
@@ -37,6 +38,7 @@ export default TabelCoin;
 
 const TabelRow = ({
   coin: {
+    id,
     name,
     image,
     symbol,
@@ -44,12 +46,17 @@ const TabelRow = ({
     current_price,
     price_change_percentage_24h: price_change,
   },
-  setChart
+  setChart,
 }) => {
-
-  const showHandeler = () => {
-    setChart(true);
-  }
+  const showHandeler = async () => {
+    try {
+      const res = await fetch(marketChart(id));
+      const json = await res.json();
+      setChart(json);
+    } catch (error) {
+      setChart(null);
+    }
+  };
 
   return (
     <tr>
