@@ -1,12 +1,12 @@
-import Homepage from "./components/templates/Homepage"
+import Homepage from "./components/templates/Homepage";
+import Layout from "./layouts/Layout";
 
 function App() {
-
   return (
-    <>
-     <Homepage/>
-    </>
-  )
+    <Layout>
+      <Homepage />
+    </Layout>
+  );
 }
 
-export default App
+export default App;

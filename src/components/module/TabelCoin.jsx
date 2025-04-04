@@ -36,8 +36,8 @@ function TabelCoin({ coins, isLoading, setChart }) {
 
 export default TabelCoin;
 
-const TabelRow = ({
-  coin: {
+const TabelRow = ({ coin, setChart }) => {
+  const {
     id,
     name,
     image,
@@ -45,14 +45,13 @@ const TabelRow = ({
     total_volume,
     current_price,
     price_change_percentage_24h: price_change,
-  },
-  setChart,
-}) => {
+  } = coin;
+
   const showHandeler = async () => {
     try {
       const res = await fetch(marketChart(id));
       const json = await res.json();
-      setChart(json);
+      setChart({ ...json, coin });
     } catch (error) {
       setChart(null);
     }
