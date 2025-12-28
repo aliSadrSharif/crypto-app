@@ -1,27 +1,33 @@
 import { useEffect, useState } from "react";
 import { searchCoin } from "../../services/cryptoApi";
-
 import { FadeLoader } from "react-spinners";
-
 import styles from "./Search.module.css";
 
 function Search({ currency, setCurrency }) {
   const [text, setText] = useState("");
   const [coins, setCoins] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [debouncedText, setDebouncedText] = useState(text);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedText(text);
+    }, 800);
+    return () => clearTimeout(timer);
+  }, [text]);
 
   useEffect(() => {
     const controller = new AbortController();
 
     setCoins([]);
-    if (!text) {
+    if (!debouncedText) {
       setIsLoading(false);
       return;
     }
 
     const search = async () => {
       try {
-        const res = await fetch(searchCoin(text), {
+        const res = await fetch(searchCoin(debouncedText), {
           signal: controller.signal,
         });
         const json = await res.json();
@@ -44,7 +50,7 @@ function Search({ currency, setCurrency }) {
     return () => {
       controller.abort();
     };
-  }, [text]);
+  }, [debouncedText]);
 
   return (
     <div className={styles.searchBox}>
@@ -59,7 +65,7 @@ function Search({ currency, setCurrency }) {
         <option value="eur">EUR</option>
         <option value="jpy">JPY</option>
       </select>
-      {(!!coins.length || isLoading) && (
+      {(coins.length || isLoading) && (
         <div className={styles.searchResult}>
           {isLoading && <FadeLoader color="#3874ff" width={5} />}
           <ul>

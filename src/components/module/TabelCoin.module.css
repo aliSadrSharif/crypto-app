@@ -19,7 +19,7 @@
   font-size: 1.2rem;
   text-align: left;
   padding: 10px 0;
-  color: #6CB4EE;
+  color: #6cb4ee;
 }
 
 .table tbody tr {
@@ -29,10 +29,9 @@
   font-size: 1.1rem;
 }
 
-.symbol{
+.symbol {
   display: flex;
   align-items: center;
-  cursor: pointer;
 }
 
 .symbol img {

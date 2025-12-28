@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -10,17 +12,9 @@ body {
   padding: 10px;
   background-color: #131315;
   color: #fff;
-  background: #141e30; 
-  background: -webkit-linear-gradient(
-    to right,
-    #243b55,
-    #141e30
-  ); 
-  background: linear-gradient(
-    to right,
-    #243b55,
-    #141e30
-  ); 
+  background: #141e30;
+  background: -webkit-linear-gradient(to right, #243b55, #141e30);
+  background: linear-gradient(to right, #243b55, #141e30);
 }
 
 * {

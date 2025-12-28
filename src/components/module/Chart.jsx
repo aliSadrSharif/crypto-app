@@ -25,26 +25,34 @@ function Chart({ chart, setChart }) {
 
   return (
     <div className={styles.container}>
-      <span
-        className={styles.cross}
-        onClick={() => {
-          setChart(null);
-        }}
-      >
-        X
-      </span>
       <div className={styles.chart}>
         <div className={styles.name}>
-          <img src={chart.coin.image} />
-          <p>{chart.coin.name}</p>
+          <div className="flex">
+            <img src={chart.coin.image} />
+            <p>{chart.coin.name}</p>
+          </div>
+          <span
+            className={styles.cross}
+            onClick={() => {
+              setChart(null);
+            }}
+          >
+            X
+          </span>
         </div>
         <div className={styles.graph}>
           <ChartComponent data={convertData(chart, type)} type={type} />
         </div>
         <div className={styles.types} onClick={typeHandeler}>
-          <button className={type === "prices" ? styles.selected : null}>Prices</button>
-          <button className={type === "market_caps" ? styles.selected : null}>Market Caps</button>
-          <button className={type === "total_volumes" ? styles.selected : null}>Total Volumes</button>
+          <button className={type === "prices" ? styles.selected : null}>
+            Prices
+          </button>
+          <button className={type === "market_caps" ? styles.selected : null}>
+            Market Caps
+          </button>
+          <button className={type === "total_volumes" ? styles.selected : null}>
+            Total Volumes
+          </button>
         </div>
         <div className={styles.details}>
           <div>

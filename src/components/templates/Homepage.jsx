@@ -32,8 +32,18 @@ function Homepage() {
 
   return (
     <div>
-      <Search currency={currency} setCurrency={setCurrency} />
-      <TabelCoin coins={coins} isLoading={isLoading} setChart={setChart} />
+      <Search
+        currency={currency}
+        coins={coins}
+        setChart={setChart}
+        setCurrency={setCurrency}
+      />
+      <TabelCoin
+        coins={coins}
+        isLoading={isLoading}
+        setChart={setChart}
+        currency={currency}
+      />
       <Pagination page={page} setPage={setPage} />
       {!!chart && <Chart chart={chart} setChart={setChart} />}
     </div>
